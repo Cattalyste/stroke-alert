@@ -32,9 +32,27 @@ Data columns:
   
 - Average glucose level: range (55.12 - 271.74) is realistic.
   
-
+  
 ### Data imputation  
   
 - BMI values were imputed while grouping data features and replacing the null BMI value with the mean value of the group where NaN is present. Continuous variables were grouped by their distrbution by minimum logical number of bins to respect the obesity type or age / glucose level groups. Firstly all features were used for grouping, then the groups were enlarged by taking one feature out (that has least impact to the stroke prediction based on correlation & association tests results) of the grouping criteria. This was done recursively to fill out all missing BMI values.  
   
-- Smoking status were imputed in two different ways. First is similar to BMI values imputation method and this deteriorated the results.
+- Smoking status were imputed in two different ways. First is similar to BMI values imputation method and this deteriorated the results.  
+  
+  
+### Supervised Classification Algorithms used 
+  
+- Random Forest Classifier - Utilizes an ensemble of decision trees to make predictions, offering robustness against overfitting and high accuracy in classification tasks.
+  
+- Logistic Regression - A linear model used for binary classification, estimating the probability of a binary outcome based on input features through a logistic function.
+  
+- Voting Classifier - Combines predictions from multiple individual classifiers to make a final prediction, leveraging the wisdom of crowds for improved classification accuracy.
+  
+  
+### Results
+  
+The most important evaluation criteria in this case is Positive stroke class Recall as in the medical domain it is sensitive to correctly predict the occurrence of strokes. High recall ensures that a large proportion of actual stroke cases are correctly identified by the model, reducing the likelihood of false negatives and potentially enabling timely interventions or treatments to prevent strokes.
+  
+The **multiple features Voting Classifier** yielded the best results - 88% of recall in positive stroke class.  
+  
+While the results show that model performs relativelly well statistically, in the health sector such prediction would mean that at least 1 of 10 predictions are False. The situation could be improved by revealing the prediction probability of the stroke class. If the prediction is around 50%, more data should be collected to give the more confident prediction.
